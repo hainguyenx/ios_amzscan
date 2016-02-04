@@ -21,12 +21,12 @@
                     </view>
                     <connections>
                         <segue destination="c8U-hf-vWv" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="F9O-VM-xPJ"/>
-                        <segue destination="dXH-rC-dKS" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="fVO-V1-zoo"/>
+                        <segue destination="lDI-TU-2cN" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="63R-ND-6dc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="-208"/>
+            <point key="canvasLocation" x="-212" y="-468"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="o9i-AP-dEc">
@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RNH-76-tJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="493"/>
+            <point key="canvasLocation" x="1026" y="833"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="MMi-W1-KaJ">
@@ -251,7 +251,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="lDI-TU-2cN" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Mqp-Iw-w8r"/>
+                                            <segue destination="lDI-TU-2cN" kind="custom" identifier="homeSeque" customClass="SWRevealViewControllerSeguePushController" id="Mqp-Iw-w8r"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ndk-jA-avy">
@@ -274,7 +274,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192680358887" green="0.94903725385665894" blue="0.95307987928390503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="dXH-rC-dKS" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Wty-cu-OK2"/>
+                                            <segue destination="dXH-rC-dKS" kind="custom" identifier="historySegue" customClass="SWRevealViewControllerSeguePushController" id="Wty-cu-OK2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dcS-Um-JRf">
@@ -471,7 +471,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </mapView>
             </objects>
-            <point key="canvasLocation" x="1877" y="-36"/>
+            <point key="canvasLocation" x="1190" y="24"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a23-LC-1XJ">
@@ -586,7 +586,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEa-In-44R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="493"/>
+            <point key="canvasLocation" x="-212" y="567"/>
         </scene>
     </scenes>
     <resources>
@@ -597,6 +597,6 @@
         <image name="photo" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fVO-V1-zoo"/>
+        <segue reference="63R-ND-6dc"/>
     </inferredMetricsTieBreakers>
 </document>

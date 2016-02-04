@@ -3,3 +3,4 @@
 //
 
 #import "SWRevealViewController.h"
+#import <CommonCrypto/CommonHMAC.h>
