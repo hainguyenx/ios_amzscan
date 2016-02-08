@@ -114,7 +114,8 @@ class AmazonSerializer {
             
             let encodedSignatureData = signature.hmacSHA256(self.secret)
             var encodedSignatureString = encodedSignatureData.base64EncodedString()
-                        
+
+            
             encodedSignatureString = CFURLCreateStringByAddingPercentEscapes(
                 nil,
                 encodedSignatureString,
@@ -124,7 +125,6 @@ class AmazonSerializer {
                 ) as String
             encodedSignatureString = encodedSignatureString.stringByReplacingOccurrencesOfString(
                 "+", withString:"%2B",options: NSStringCompareOptions.LiteralSearch, range: nil)
-
             let newCanonicalString = "\(encodedCanonicalString)&\(AmazonProductAdvertising.SignatureKey.rawValue)=\(encodedSignatureString)"
             
             let absString = req.URLRequest.URL!.absoluteString

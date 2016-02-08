@@ -5,3 +5,4 @@ use_frameworks!
 
 pod 'Alamofire', '~> 2.0'
 pod 'SHXMLParser'
+pod 'SwiftyJSON'
