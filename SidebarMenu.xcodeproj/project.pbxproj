@@ -10,6 +10,8 @@
 		7E6ADDCA1C5C1C4600B502EA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6ADDC91C5C1C4600B502EA /* SWRevealViewController.m */; };
 		7E6ADDD21C60178200B502EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6ADDD11C60178200B502EA /* HomeViewController.swift */; };
 		7E6ADDD41C6107B600B502EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E6ADDD31C6107B600B502EA /* Main.storyboard */; };
+		7E9F77701C6A4FB00035C26A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F776F1C6A4FB00035C26A /* Product.swift */; };
+		7E9F77761C6A9DA10035C26A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F77751C6A9DA10035C26A /* CustomCell.swift */; };
 		7EBE54B91C627F91002B9850 /* AmazonProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE54B81C627F91002B9850 /* AmazonProduct.swift */; };
 		7EBE54BD1C62B6AA002B9850 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EBE54BC1C62B6AA002B9850 /* Default-568h@2x.png */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
@@ -41,6 +43,8 @@
 		7E6ADDC91C5C1C4600B502EA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		7E6ADDD11C60178200B502EA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7E6ADDD31C6107B600B502EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7E9F776F1C6A4FB00035C26A /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		7E9F77751C6A9DA10035C26A /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		7EBE54B81C627F91002B9850 /* AmazonProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonProduct.swift; sourceTree = "<group>"; };
 		7EBE54BC1C62B6AA002B9850 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A8AF43FD90B5ACCDC20D59C6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +103,14 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		7E9F776E1C6A4E840035C26A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E9F776F1C6A4FB00035C26A /* Product.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		9C44BF9CC28BD8FEC19841E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +144,7 @@
 		F47029F21A7F27DB00E30A3C /* SidebarMenu */ = {
 			isa = PBXGroup;
 			children = (
+				7E9F776E1C6A4E840035C26A /* Models */,
 				7E6ADDC61C5C1BE900B502EA /* SWRevealViewController */,
 				F47029F51A7F27DB00E30A3C /* AppDelegate.swift */,
 				F47029FC1A7F27DB00E30A3C /* Images.xcassets */,
@@ -144,6 +157,7 @@
 				F491E7541A7F7E010026528E /* PhotoViewController.swift */,
 				7E6ADDD11C60178200B502EA /* HomeViewController.swift */,
 				7EBE54B81C627F91002B9850 /* AmazonProduct.swift */,
+				7E9F77751C6A9DA10035C26A /* CustomCell.swift */,
 			);
 			path = SidebarMenu;
 			sourceTree = "<group>";
@@ -333,6 +347,8 @@
 			files = (
 				7E6ADDCA1C5C1C4600B502EA /* SWRevealViewController.m in Sources */,
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
+				7E9F77761C6A9DA10035C26A /* CustomCell.swift in Sources */,
+				7E9F77701C6A4FB00035C26A /* Product.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
 				F491E7531A7F7DF20026528E /* MapViewController.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,

@@ -9,10 +9,16 @@
 import UIKit
 import SwiftyJSON
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
+    @IBOutlet weak var tableView: UITableView!
+    @IBAction func scanButton(sender: UIBarButtonItem) {
+          amazonItemSearch("312547427951")
+          tableView.reloadData()
+        
+    }
+    var products:[Product] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +27,7 @@ class HomeViewController: UIViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        amazonItemSearch("312547427951")
+      
     }
     
 
@@ -62,8 +68,7 @@ class HomeViewController: UIViewController {
         amazonRequest(amazonParams, serializer: serializer).responseXML { (req, res, data, error) -> Void in
             
             var json = JSON(data!)
-//            print("DATA= \(json)")
-           // print("-----------------")
+
             print(json)
             let totalResults = json["ItemSearchResponse"]["Items"]["TotalResults"].intValue
            
@@ -76,6 +81,7 @@ class HomeViewController: UIViewController {
             for var index = 0; index < totalResults; ++index{
                  print("ASIN is \(item[index]["ASIN"])")
                 print("SalesRank is \(item[index]["SalesRank"].intValue)")
+                let salesRank = item[index]["SalesRank"].stringValue
                 
                 let totalNew = item[index]["OfferSummary"]["TotalNew"].intValue
                 print("totalNew=\(totalNew)")
@@ -89,12 +95,21 @@ class HomeViewController: UIViewController {
                 
                 let totalOffer = totalNew + totalRefurbished + totalUsed
                 print("Offer is \(totalOffer)")
+
                 
-                let title = item[index]["ItemAttributes"]["Title"]
+                let title = item[index]["ItemAttributes"]["Title"].stringValue
                 print("Title is \(title)")
+
                 
-                let category = item[index]["ItemAttributes"]["ProductGroup"]
+                let category = item[index]["ItemAttributes"]["ProductGroup"].stringValue
+
                 print("Category is \(category)")
+                
+                let image = item[index]["MediumImage"]["URL"].stringValue
+                print(image)
+                
+                let product = Product(title:title, totalOffer: totalOffer,category: category,salesRank: salesRank, imageURL: image)
+                self.products.append(product)
                 print("---------")
                 
             }
@@ -108,6 +123,31 @@ class HomeViewController: UIViewController {
 
         }
     }
+    
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.products.count
+    }
+    
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath: indexPath) as! CustomCell
+        
+        let product = self.products[indexPath.row]
+        //cell.title?.text = product.title
+        //cell.category?.text = product.category
+        //cell.rank?.text = product.salesRank
+//        if let url  = NSURL(string:product.imageURL),
+//            data = NSData(contentsOfURL: url)
+//        {
+//            cell.productImage.image = UIImage(data: data)
+//        }
 
+        //cell.offer?.text = String(product.totalOffer)
+        
+        return cell
+    }
     
 }
