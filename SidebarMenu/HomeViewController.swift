@@ -27,7 +27,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-      
     }
     
 
@@ -149,7 +148,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        print(product.category)
 //        print(product.imageURL)
 //        print("********")
- //       cell.title.text = product.title
+        cell.title.text = product.title
         cell.category?.text = product.category
         cell.salesRank?.text = String(product.salesRank)
 //        if let url  = NSURL(string:product.imageURL),
