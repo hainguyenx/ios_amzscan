@@ -12,10 +12,10 @@ class Product {
     var totalOffer:Int
     var title:String
     var category:String
-    var salesRank:String
+    var salesRank:Int
     var imageURL:String
     
-    init(title :String, totalOffer:Int, category:String, salesRank:String, imageURL:String){
+    init(title :String, totalOffer:Int, category:String, salesRank:Int, imageURL:String){
         self.title = title
         self.totalOffer = totalOffer
         self.category = category

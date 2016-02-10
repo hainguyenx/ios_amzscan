@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             var json = JSON(data!)
 
-            print(json)
+            //print(json)
             let totalResults = json["ItemSearchResponse"]["Items"]["TotalResults"].intValue
            
             
@@ -79,19 +79,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let item =  json["ItemSearchResponse"]["Items"]["Item"]
 
             for var index = 0; index < totalResults; ++index{
-                 print("ASIN is \(item[index]["ASIN"])")
-                print("SalesRank is \(item[index]["SalesRank"].intValue)")
-                let salesRank = item[index]["SalesRank"].stringValue
+                // print("ASIN is \(item[index]["ASIN"])")
+                
+                let salesRank = item[index]["SalesRank"].intValue
+                print("SalesRank is \(salesRank)")
                 
                 let totalNew = item[index]["OfferSummary"]["TotalNew"].intValue
-                print("totalNew=\(totalNew)")
+                //print("totalNew=\(totalNew)")
                 
                 let totalRefurbished = item[index]["OfferSummary"]["TotalRefurbished"].intValue
-                print("totalRef=\(totalRefurbished)")
+               // print("totalRef=\(totalRefurbished)")
                 
                 
                 let totalUsed = item[index]["OfferSummary"]["TotalUsed"].intValue
-                print("totalUse = \(totalUsed)")
+               // print("totalUse = \(totalUsed)")
                 
                 let totalOffer = totalNew + totalRefurbished + totalUsed
                 print("Offer is \(totalOffer)")
@@ -102,7 +103,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
                 
                 let category = item[index]["ItemAttributes"]["ProductGroup"].stringValue
-
                 print("Category is \(category)")
                 
                 let image = item[index]["MediumImage"]["URL"].stringValue
@@ -110,6 +110,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 let product = Product(title:title, totalOffer: totalOffer,category: category,salesRank: salesRank, imageURL: image)
                 self.products.append(product)
+                
+                print("Product=\(product.title)")
+                print(product.salesRank)
+                print(product.totalOffer)
+                print(product.category)
+                print(product.imageURL)
+                print("********")
                 print("---------")
                 
             }
@@ -136,16 +143,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath: indexPath) as! CustomCell
         
         let product = self.products[indexPath.row]
-        //cell.title?.text = product.title
-        //cell.category?.text = product.category
-        //cell.rank?.text = product.salesRank
-//        if let url  = NSURL(string:product.imageURL),
-//            data = NSData(contentsOfURL: url)
-//        {
-//            cell.productImage.image = UIImage(data: data)
-//        }
+//        print("Product=\(product.title)")
+//        print(product.salesRank)
+//        print(product.totalOffer)
+//        print(product.category)
+//        print(product.imageURL)
+//        print("********")
+ //       cell.title.text = product.title
+        cell.category?.text = product.category
+        cell.rank?.text = String(product.salesRank)
+        if let url  = NSURL(string:product.imageURL),
+            data = NSData(contentsOfURL: url)
+        {
+            cell.productImage.image = UIImage(data: data)
+        }
 
-        //cell.offer?.text = String(product.totalOffer)
+        cell.offer?.text = String(product.totalOffer)
         
         return cell
     }
