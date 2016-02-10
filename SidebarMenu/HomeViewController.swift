@@ -151,12 +151,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        print("********")
  //       cell.title.text = product.title
         cell.category?.text = product.category
-        cell.rank?.text = String(product.salesRank)
-        if let url  = NSURL(string:product.imageURL),
-            data = NSData(contentsOfURL: url)
-        {
-            cell.productImage.image = UIImage(data: data)
-        }
+        cell.salesRank?.text = String(product.salesRank)
+//        if let url  = NSURL(string:product.imageURL),
+//            data = NSData(contentsOfURL: url)
+//        {
+//            cell.productImage.image = UIImage(data: data)
+//        }
 
         cell.offer?.text = String(product.totalOffer)
         
