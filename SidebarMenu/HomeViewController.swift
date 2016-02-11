@@ -9,19 +9,42 @@
 import UIKit
 import SwiftyJSON
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            let request = NSURLRequest(URL: url)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                self.image = UIImage(data: data!)
+            }
+        }
+    }
+}
 
+
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
+
+    
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBox: UITextField!
+  
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.searchBox.resignFirstResponder()
+        amazonItemSearch(self.searchBox.text!)
+        return true
+    }
+    
     @IBAction func scanButton(sender: UIBarButtonItem) {
-          amazonItemSearch("312547427951")
-          tableView.reloadData()
+          //amazonItemSearch("asdfasd312547427951sdfdfd")
+          //tableView.reloadData()
         
     }
     var products:[Product] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.searchBox.delegate = self
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
@@ -33,7 +56,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func amazonItemLookup(searchKey:String){
         
         
-        let asin = "B00DVDMRX6" // an amazon id to search for
+        let asin = "B00DdfgsdfaVDMRX6" // an amazon id to search for
         
         let serializer = AmazonSerializer(key: aws_key_default, secret: aws_secret_default)
         
@@ -68,65 +91,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             var json = JSON(data!)
 
-            //print(json)
+            print(json)
             let totalResults = json["ItemSearchResponse"]["Items"]["TotalResults"].intValue
            
-            
-            
-            
             print("INDEx=\(totalResults)")
             let item =  json["ItemSearchResponse"]["Items"]["Item"]
-
-            for var index = 0; index < totalResults; ++index{
-                // print("ASIN is \(item[index]["ASIN"])")
-                
-                let salesRank = item[index]["SalesRank"].intValue
-                print("SalesRank is \(salesRank)")
-                
-                let totalNew = item[index]["OfferSummary"]["TotalNew"].intValue
-                //print("totalNew=\(totalNew)")
-                
-                let totalRefurbished = item[index]["OfferSummary"]["TotalRefurbished"].intValue
-               // print("totalRef=\(totalRefurbished)")
-                
-                
-                let totalUsed = item[index]["OfferSummary"]["TotalUsed"].intValue
-               // print("totalUse = \(totalUsed)")
-                
-                let totalOffer = totalNew + totalRefurbished + totalUsed
-                print("Offer is \(totalOffer)")
-
-                
-                let title = item[index]["ItemAttributes"]["Title"].stringValue
-                print("Title is \(title)")
-
-                
-                let category = item[index]["ItemAttributes"]["ProductGroup"].stringValue
-                print("Category is \(category)")
-                
-                let image = item[index]["MediumImage"]["URL"].stringValue
-                print(image)
-                
-                let product = Product(title:title, totalOffer: totalOffer,category: category,salesRank: salesRank, imageURL: image)
-                self.products.append(product)
-                
-                print("Product=\(product.title)")
-                print(product.salesRank)
-                print(product.totalOffer)
-                print(product.category)
-                print(product.imageURL)
-                print("********")
-                print("---------")
-                
-            }
-            
- //           let item =  json["ItemSearchResponse"]["Items"]["Item"]
-//                print(item[0]["ASIN"])
-//                print(item[1]["ASIN"])
-//                print("--------------")
-            
-            //ItemSearchErrorResponse
-
+            self.products.removeAll()
+            //if( totalResults > 0){
+                for var index = 0; index < totalResults; ++index{
+                    let salesRank = item[index]["SalesRank"].intValue
+                    let totalNew = item[index]["OfferSummary"]["TotalNew"].intValue
+                    let totalRefurbished = item[index]["OfferSummary"]["TotalRefurbished"].intValue
+                    let totalUsed = item[index]["OfferSummary"]["TotalUsed"].intValue
+                    let totalOffer = totalNew + totalRefurbished + totalUsed
+                    let title = item[index]["ItemAttributes"]["Title"].stringValue
+                    let category = item[index]["ItemAttributes"]["ProductGroup"].stringValue
+                    let image = item[index]["SmallImage"]["URL"].stringValue
+                    let product = Product(title:title, totalOffer: totalOffer,category: category,salesRank: salesRank, imageURL: image)
+                    self.products.append(product)
+                    
+                }
+//            }else{
+//                //load an unfind message in the table view
+//            }
+            self.tableView.reloadData()
         }
     }
     
@@ -142,24 +130,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath: indexPath) as! CustomCell
         
         let product = self.products[indexPath.row]
-//        print("Product=\(product.title)")
-//        print(product.salesRank)
-//        print(product.totalOffer)
-//        print(product.category)
-//        print(product.imageURL)
-//        print("********")
         cell.title.text = product.title
         cell.category?.text = product.category
         cell.salesRank?.text = String(product.salesRank)
-//        if let url  = NSURL(string:product.imageURL),
-//            data = NSData(contentsOfURL: url)
-//        {
-//            cell.productImage.image = UIImage(data: data)
-//        }
-
+        print("Image=\(product.imageURL)")
+        cell.productImage.imageFromUrl(product.imageURL)
         cell.offer?.text = String(product.totalOffer)
         
         return cell
     }
+    
+    
     
 }
