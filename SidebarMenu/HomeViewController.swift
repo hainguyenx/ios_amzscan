@@ -148,11 +148,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationController?.pushViewController(itemDetailViewController, animated: true)
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if(segue.identifier == "itemDetailSeque") {
-//            
-//        }
-//    }
+
     
     
 }
