@@ -140,6 +140,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Inside table cell clicked")
+        let product = self.products[indexPath.row]
+        print(product)
+        let itemDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ItemDetailViewController") as! ItemDetailViewController
+        self.navigationController?.pushViewController(itemDetailViewController, animated: true)
+    }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier == "itemDetailSeque") {
+//            
+//        }
+//    }
     
     
 }

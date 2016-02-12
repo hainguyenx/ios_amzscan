@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E08B6361C6E38FC00256437 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E08B6351C6E38FC00256437 /* ItemDetailViewController.swift */; };
 		7E6ADDCA1C5C1C4600B502EA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6ADDC91C5C1C4600B502EA /* SWRevealViewController.m */; };
 		7E6ADDD21C60178200B502EA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6ADDD11C60178200B502EA /* HomeViewController.swift */; };
 		7E6ADDD41C6107B600B502EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E6ADDD31C6107B600B502EA /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		3614B162A4843CA23655B85A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E08B6351C6E38FC00256437 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		7E6ADDC71C5C1C4500B502EA /* SidebarMenu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SidebarMenu-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E6ADDC81C5C1C4600B502EA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		7E6ADDC91C5C1C4600B502EA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				7E6ADDD11C60178200B502EA /* HomeViewController.swift */,
 				7EBE54B81C627F91002B9850 /* AmazonProduct.swift */,
 				7E9F77751C6A9DA10035C26A /* CustomCell.swift */,
+				7E08B6351C6E38FC00256437 /* ItemDetailViewController.swift */,
 			);
 			path = SidebarMenu;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				F491E7531A7F7DF20026528E /* MapViewController.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
 				7EBE54B91C627F91002B9850 /* AmazonProduct.swift in Sources */,
+				7E08B6361C6E38FC00256437 /* ItemDetailViewController.swift in Sources */,
 				7E6ADDD21C60178200B502EA /* HomeViewController.swift in Sources */,
 				F491E7551A7F7E010026528E /* PhotoViewController.swift in Sources */,
 			);
