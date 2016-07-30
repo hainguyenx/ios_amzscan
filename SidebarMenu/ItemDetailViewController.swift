@@ -10,10 +10,31 @@ import UIKit
 
 class ItemDetailViewController: UIViewController {
 
+    @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemCatagory: UILabel!
+    @IBOutlet weak var itemSalesRank: UILabel!
+    @IBOutlet weak var itemOffer: UILabel!
+    
+    var prodAmzTitle: String = ""
+    var prodAmzRank: Int = 0
+    var prodAmzCatagory: String = ""
+    var prodAmzImageURL: String = ""
+    var prodAmzOffer: Int = 0
+    
+    
+    /*override func viewWillAppear(animated: Bool){
+        itemTitle.text = blogName
+    }*/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        itemTitle.text = prodAmzTitle
+        itemImage.imageFromUrl(prodAmzImageURL)
+        itemSalesRank.text = String(prodAmzRank)
+        itemCatagory.text = prodAmzCatagory
+        itemOffer.text = String(prodAmzOffer)
     }
 
     override func didReceiveMemoryWarning() {

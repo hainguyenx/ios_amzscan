@@ -8,41 +8,49 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-SidebarMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>SHXMLParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>397ACA17FB06F6571CB6D2C2C135767E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4B2F30D90D85A544E9EFE2A49D392C25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>557AD1CE75CA713396B384CC071E09A3</key>
+		<key>4E6EA768AEC425A48838A2A87BCE1EA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E102AA34C596CBF106DDE41665632B9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E714C8AA3C56C4F994ABE7FB3F99B164</key>
+		<key>4FC8995666C5E3D205A76FC62721E9F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

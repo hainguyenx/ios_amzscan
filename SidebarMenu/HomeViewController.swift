@@ -29,6 +29,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBox: UITextField!
+    let itemDetailSegueIdentifier = "itemDetailSeque"
+    let detailSegueIdentifier = "detailShowSegue"
+    //temp values for segue
+    var tempTitle = "Nothing here yet boss..."
   
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.searchBox.resignFirstResponder()
@@ -41,9 +45,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
           //tableView.reloadData()
         
     }
+    
+    var reachability: Reachability?
+    
     var products:[Product] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viaConnection()
+        
         self.searchBox.delegate = self
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -52,6 +62,45 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func viaConnection(){
+        let reachability = try! Reachability.reachabilityForInternetConnection()
+        
+        reachability.whenReachable = { reachability in
+            if reachability.isReachableViaWiFi() {
+            /*
+                 let alertController = UIAlertController(title: "Alert", message: "Reachable via WiFi", preferredStyle: .Alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            */
+
+            }
+            else {
+            /*
+                 let alertController = UIAlertController(title: "Alert", message: "Reachable via Cellular", preferredStyle: .Alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            */
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            //check again for connection
+            let optionMenu = UIAlertController(title: "No Connection", message: "Check Connection", preferredStyle: .ActionSheet)
+            let againAction = UIAlertAction(title: "OK", style: .Default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                print("Check Again")
+            })
+            optionMenu.addAction(againAction)
+            self.presentViewController(optionMenu, animated: true, completion: nil)
+        }
+        
+        try! reachability.startNotifier()
+    }
 
     func amazonItemLookup(searchKey:String){
         
@@ -133,22 +182,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.title.text = product.title
         cell.category?.text = product.category
         cell.salesRank?.text = String(product.salesRank)
-        print("Image=\(product.imageURL)")
+        //print("Image=\(product.imageURL)")
         cell.productImage.imageFromUrl(product.imageURL)
         cell.offer?.text = String(product.totalOffer)
         
         return cell
     }
-    
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Inside table cell clicked")
+
+    /*func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let product = self.products[indexPath.row]
-        print(product)
+        print("Clicked product title: ", product.title,"\n")
         let itemDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ItemDetailViewController") as! ItemDetailViewController
         self.navigationController?.pushViewController(itemDetailViewController, animated: true)
+    }*/
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == detailSegueIdentifier,
+            let destination = segue.destinationViewController as? ItemDetailViewController,
+            productIndex = tableView.indexPathForSelectedRow?.row
+        {
+            let prod = self.products[productIndex]
+            destination.prodAmzTitle = prod.title
+            destination.prodAmzImageURL = prod.imageURL
+            destination.prodAmzRank = prod.salesRank
+            destination.prodAmzCatagory = prod.category
+            destination.prodAmzOffer = prod.totalOffer
+        }
     }
-    
-
-    
     
 }
