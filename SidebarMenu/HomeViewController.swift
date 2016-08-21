@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import CoreTelephony
 
 extension UIImageView {
     public func imageFromUrl(urlString: String) {
@@ -31,8 +32,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var searchBox: UITextField!
     let itemDetailSegueIdentifier = "itemDetailSeque"
     let detailSegueIdentifier = "detailShowSegue"
-    //temp values for segue
-    var tempTitle = "Nothing here yet boss..."
+    var ttlConnect = "Something ain't quite right here."
+    var msgConnect = "There seems to be no connection to the interwebs. Can you please dig into that?"
   
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.searchBox.resignFirstResponder()
@@ -67,33 +68,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         reachability.whenReachable = { reachability in
             if reachability.isReachableViaWiFi() {
-            /*
-                 let alertController = UIAlertController(title: "Alert", message: "Reachable via WiFi", preferredStyle: .Alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-            */
-
+                print("Connected via WiFi")
             }
             else {
-            /*
-                 let alertController = UIAlertController(title: "Alert", message: "Reachable via Cellular", preferredStyle: .Alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-            */
+                let networkInfo = CTTelephonyNetworkInfo()
+                let carrier = networkInfo.subscriberCellularProvider
+                print("Connection up via: ", carrier!.carrierName)
             }
         }
         reachability.whenUnreachable = { reachability in
-            //check again for connection
-            let optionMenu = UIAlertController(title: "No Connection", message: "Check Connection", preferredStyle: .ActionSheet)
-            let againAction = UIAlertAction(title: "OK", style: .Default, handler: {
+            let optionMenu = UIAlertController(title: self.ttlConnect, message: self.msgConnect, preferredStyle: .ActionSheet)
+            let againAction = UIAlertAction(title: "Check Again", style: .Default, handler: {
                 (alert: UIAlertAction!) -> Void in
-                print("Check Again")
+                print("Connection Down...")
+                self.viaConnection()
             })
             optionMenu.addAction(againAction)
             self.presentViewController(optionMenu, animated: true, completion: nil)
@@ -137,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ]
         
         amazonRequest(amazonParams, serializer: serializer).responseXML { (req, res, data, error) -> Void in
-            
+            self.tableView.reloadData()
             var json = JSON(data!)
 
             print(json)
@@ -182,7 +170,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.title.text = product.title
         cell.category?.text = product.category
         cell.salesRank?.text = String(product.salesRank)
-        //print("Image=\(product.imageURL)")
         cell.productImage.imageFromUrl(product.imageURL)
         cell.offer?.text = String(product.totalOffer)
         

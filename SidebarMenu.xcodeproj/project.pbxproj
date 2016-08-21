@@ -16,6 +16,8 @@
 		7EBE54B91C627F91002B9850 /* AmazonProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE54B81C627F91002B9850 /* AmazonProduct.swift */; };
 		7EBE54BD1C62B6AA002B9850 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EBE54BC1C62B6AA002B9850 /* Default-568h@2x.png */; };
 		A7130EF71D49A70500A87A79 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7130EF61D49A70500A87A79 /* Reachability.swift */; };
+		A7E52CDE1D6014AB003D99C7 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52CDD1D6014AB003D99C7 /* ScanViewController.swift */; };
+		A7E52CE01D601871003D99C7 /* DiscoveredBarCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52CDF1D601871003D99C7 /* DiscoveredBarCodeView.swift */; };
 		EE10E9F8D3053C16A512CEF3 /* Pods_SidebarMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA184D1BA8A38D5BA5BBC0E3 /* Pods_SidebarMenu.framework */; };
 		F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47029F51A7F27DB00E30A3C /* AppDelegate.swift */; };
 		F47029FD1A7F27DB00E30A3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47029FC1A7F27DB00E30A3C /* Images.xcassets */; };
@@ -52,6 +54,8 @@
 		7EBE54B81C627F91002B9850 /* AmazonProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonProduct.swift; sourceTree = "<group>"; };
 		7EBE54BC1C62B6AA002B9850 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A7130EF61D49A70500A87A79 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		A7E52CDD1D6014AB003D99C7 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		A7E52CDF1D601871003D99C7 /* DiscoveredBarCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveredBarCodeView.swift; sourceTree = "<group>"; };
 		D758E454F7DAF505001EB69F /* Pods-SidebarMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SidebarMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SidebarMenu/Pods-SidebarMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		EA184D1BA8A38D5BA5BBC0E3 /* Pods_SidebarMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SidebarMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47029F01A7F27DB00E30A3C /* SidebarMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SidebarMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +170,8 @@
 				7E9F77751C6A9DA10035C26A /* CustomCell.swift */,
 				7E08B6351C6E38FC00256437 /* ItemDetailViewController.swift */,
 				A7130EF61D49A70500A87A79 /* Reachability.swift */,
+				A7E52CDD1D6014AB003D99C7 /* ScanViewController.swift */,
+				A7E52CDF1D601871003D99C7 /* DiscoveredBarCodeView.swift */,
 			);
 			path = SidebarMenu;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
 				7E9F77761C6A9DA10035C26A /* CustomCell.swift in Sources */,
 				7E9F77701C6A4FB00035C26A /* Product.swift in Sources */,
+				A7E52CDE1D6014AB003D99C7 /* ScanViewController.swift in Sources */,
 				F491E74C1A7F4C630026528E /* NewsTableViewCell.swift in Sources */,
 				F491E7531A7F7DF20026528E /* MapViewController.swift in Sources */,
 				F491E74A1A7F4B300026528E /* NewsTableViewController.swift in Sources */,
@@ -365,6 +372,7 @@
 				7E6ADDD21C60178200B502EA /* HomeViewController.swift in Sources */,
 				F491E7551A7F7E010026528E /* PhotoViewController.swift in Sources */,
 				A7130EF71D49A70500A87A79 /* Reachability.swift in Sources */,
+				A7E52CE01D601871003D99C7 /* DiscoveredBarCodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
